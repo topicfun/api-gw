@@ -36,6 +36,7 @@ public class ClientController {
 
     @GetMapping("/callBackend2Hello")
     public Mono<Message> callBackend2Hello() {
+        log.info("client calls Hello2");
         return apiService.getHelloMessageFromBackend2()
                 .onErrorReturn(new Message("Backend2 Hello Service is currently unavailable."));
     }

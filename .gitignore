@@ -28,11 +28,13 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-nginx/logs/
 !**/target/
 /java-client/target/
 /java-backend/target/
+/java-backend2/target/
 /api-gw.iml
 /.idea
 /java-backend/java-backend.iml
 /java-client/java-client.iml
+
+/readmeMy.md
