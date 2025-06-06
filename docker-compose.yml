@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: my_nginx_proxy
+    # NINCS port mapping kívülre! Csak a belső hálózaton keresztül érhető el.
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - app_network
+    # Nincs depends_on, az Nginx rugalmas a resolver miatt.
+
+  java-client:
+    build: ./java-client
+    container_name: my_java_client
+    restart: always
+    ports:
+      - "8081:8081" # Külső kérés erre a portra jön (böngészőből)
+      # A host gép 80-as portját képezi le a konténer 8081-es portjára.
+    networks:
+      - app_network
+    environment:
+      SERVER_PORT: 8081 # A kliens alkalmazás portja
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8081/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  java-backend:
+    build: ./java-backend
+    container_name: my_java_backend
+    restart: always
+    ports:
+      - "8082:8082" # Külső kérés erre a portra jön (böngészőből)
+    networks:
+      - app_network
+    environment:
+      SERVER_PORT: 8082 # A backend alkalmazás portja
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8082/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  app_network:
+    driver: bridge
