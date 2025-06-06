@@ -29,4 +29,10 @@ public class ClientController {
         return apiService.getDataFromBackend()
                 .onErrorReturn(new Message("Backend Data Service is currently unavailable.")); // <-- Hiba esetén fallback üzenet
     }
+
+    @GetMapping("/callBackend2Hello")
+    public Mono<Message> callBackend2Hello() {
+        return apiService.getHelloMessageFromBackend2()
+                .onErrorReturn(new Message("Backend2 Hello Service is currently unavailable."));
+    }
 }
