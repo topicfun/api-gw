@@ -6,6 +6,7 @@ services:
     # NINCS port mapping kívülre! Csak a belső hálózaton keresztül érhető el.
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/log_format.conf:/etc/nginx/log_format.conf:ro
       - ./nginx/logs:/var/log/nginx
     networks:
       - app_network
