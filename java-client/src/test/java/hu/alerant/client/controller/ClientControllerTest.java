@@ -28,4 +28,14 @@ class ClientControllerTest {
                 .expectBody()
                 .jsonPath("$.content").isEqualTo("hello");
     }
+
+    @Test
+    void callBackend2HelloReturnsMessage() {
+        when(apiService.getHelloMessageFromBackend2()).thenReturn(Mono.just(new Message("hello2")));
+        webTestClient.get().uri("/client/callBackend2Hello")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.content").isEqualTo("hello2");
+    }
 }
