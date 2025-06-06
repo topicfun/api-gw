@@ -1,3 +1,5 @@
+package hu.alerant.client.controller;
+
 import hu.alerant.client.model.Message;
 import hu.alerant.client.service.ApiService;
 import org.junit.jupiter.api.Test;
