@@ -2,11 +2,13 @@ version: '3.8'
 
 services:
   nginx:
-    image: nginx:alpine
+    build: ./nginx
     # NINCS port mapping kívülre! Csak a belső hálózaton keresztül érhető el.
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/log_format.conf:/etc/nginx/log_format.conf:ro
+      - ./nginx/app_logger.lua:/etc/nginx/app_logger.lua:ro
+      - ./nginx/app_logger_body.lua:/etc/nginx/app_logger_body.lua:ro
       - ./nginx/logs:/var/log/nginx
     networks:
       - app_network

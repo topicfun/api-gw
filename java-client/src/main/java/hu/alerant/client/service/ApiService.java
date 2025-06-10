@@ -62,6 +62,7 @@ public class ApiService {
     private <T> Mono<T> makeRequest(String path, Class<T> responseType) {
         return webClient.get()
                 .uri(path) // Az útvonal már tartalmazza a proxy prefixet, pl. /backend-api/hello
+                .header("X-App-Header", "from-client")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response -> {
