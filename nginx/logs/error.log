@@ -1,2 +1,8 @@
 2025/06/10 09:51:06 [emerg] 1#1: unknown "user" variable
 2025/06/10 10:09:20 [emerg] 1#1: unexpected end of file, expecting ";" or "}" in /etc/nginx/log_format.conf:17
+2025/06/10 11:16:28 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" version 1026003 instead of 1027005 in /etc/nginx/nginx.conf:1
+2025/06/10 11:29:46 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" version 1026003 instead of 1027005 in /etc/nginx/nginx.conf:1
+2025/06/10 11:33:31 [emerg] 1#1: duplicate "log_format" name "custom_log" in /etc/nginx/log_format.conf:9
+2025/06/10 11:35:15 [emerg] 1#1: unknown directive "lua_need_request_body" in /etc/nginx/nginx.conf:24
+2025/06/10 11:41:26 [emerg] 1#1: unknown directive "lua_need_request_body" in /etc/nginx/nginx.conf:24
+2025/06/10 11:42:38 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" version 1026003 instead of 1027005 in /etc/nginx/nginx.conf:1
