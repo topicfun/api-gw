@@ -20,4 +20,4 @@ to regenerate `nginx/log_format.conf`. The `docker-compose` setup mounts this ge
 
 Nginx also writes an `application.log` file that contains the full request and response (headers and body) using Lua scripts. The log is located under `nginx/logs/` inside the container.
 
-The Nginx image is built from the `nginx/Dockerfile`. Run `docker-compose build nginx` whenever the configuration or Lua scripts change.
+The Nginx image is built from the `nginx/Dockerfile`. Run `docker-compose build nginx` whenever the configuration or Lua scripts change. If you encounter a module version mismatch, rebuild with `--no-cache` to ensure the base image is refreshed.
