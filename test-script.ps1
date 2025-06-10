@@ -12,8 +12,9 @@ foreach ($c in $containers) {
     }
 }
 
-# Start the nginx proxy (configuration is mounted into
-# /usr/local/openresty/nginx/conf by docker-compose)
+# Start the nginx proxy. The configuration files
+# are mounted into /usr/local/openresty/nginx/conf
+# so the proxy uses our custom routes.
 Write-Host "Starting nginx proxy with docker-compose..."
 docker compose up -d nginx
 
