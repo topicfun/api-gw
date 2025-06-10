@@ -20,4 +20,15 @@ to regenerate `nginx/log_format.conf`. The `docker-compose` setup mounts this ge
 
 Nginx also writes an `application.log` file that contains the full request and response (headers and body) using Lua scripts. The log is located under `nginx/logs/` inside the container.
 
+### Application log options
+
+The behaviour of `application.log` can be tuned through environment variables used by
+the Lua logger:
+
+* `APP_LOG_INCLUDE_HEADERS` – set to `false` to omit request/response headers.
+* `APP_LOG_INCLUDE_BODY` – set to `false` to omit request/response bodies.
+* `APP_LOG_HEADER_PARAM` – if set, logs the value of the named request header under `header_param`.
+
+All options default to logging everything.
+
 The Nginx image is built from the `nginx/Dockerfile`. Run `docker-compose build nginx` whenever the configuration or Lua scripts change.
