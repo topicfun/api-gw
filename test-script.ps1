@@ -12,9 +12,9 @@ foreach ($c in $containers) {
     }
 }
 
-# Build nginx image without using cache and start the proxy
-Write-Host "Building nginx image..."
-docker compose build --no-cache nginx
+# Start the nginx proxy. The configuration files
+# are mounted into /usr/local/openresty/nginx/conf
+# so the proxy uses our custom routes.
 Write-Host "Starting nginx proxy with docker-compose..."
 docker compose up -d nginx
 
