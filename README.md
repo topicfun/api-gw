@@ -1,6 +1,6 @@
 # API Gateway
 
-This repository contains a small demo with Nginx acting as a reverse proxy for multiple backend applications. The gateway uses a custom Nginx image built from the official `nginx:alpine` base with the Lua module installed.
+This repository contains a small demo with Nginx acting as a reverse proxy for multiple backend applications. The gateway uses a custom Nginx image built from the official `nginx:1.26.3-alpine` base with the Lua module installed. Pinning the Nginx version prevents module version mismatches.
 
 ## Log configuration
 
