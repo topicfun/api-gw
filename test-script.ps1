@@ -12,7 +12,9 @@ foreach ($c in $containers) {
     }
 }
 
-# Start nginx proxy via docker-compose
+# Build nginx image without using cache and start the proxy
+Write-Host "Building nginx image..."
+docker compose build --no-cache nginx
 Write-Host "Starting nginx proxy with docker-compose..."
 docker compose up -d nginx
 
