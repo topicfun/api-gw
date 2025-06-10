@@ -1,6 +1,5 @@
 local cjson = require "cjson.safe"
 
-ngx.req.read_body()
 local req_body = ngx.var.request_body or ""
 local req_headers = ngx.req.get_headers()
 local resp_headers = ngx.resp.get_headers()
@@ -25,3 +24,4 @@ if f then
   f:write(cjson.encode(log_entry), "\n")
   f:close()
 end
+
