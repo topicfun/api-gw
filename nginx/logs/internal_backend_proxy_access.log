@@ -1,11 +1,21 @@
-172.18.0.3 - - [06/Jun/2025:10:19:54 +0000] "GET /backend-api/hello HTTP/1.1" 502 157 "-" "-"
-172.18.0.3 - - [06/Jun/2025:10:20:01 +0000] "GET /backend-api/hello HTTP/1.1" 502 157 "-" "-"
-172.18.0.3 - - [06/Jun/2025:10:20:08 +0000] "GET /backend-api/hello HTTP/1.1" 502 157 "-" "-"
-172.18.0.3 - - [06/Jun/2025:10:20:17 +0000] "GET /backend-api/hello HTTP/1.1" 502 157 "-" "-"
-172.18.0.3 - - [06/Jun/2025:11:00:33 +0000] "GET /backend-api/hello HTTP/1.1" 200 53 "172.18.0.4:8082" "0.149"
-172.18.0.4 - - [06/Jun/2025:11:51:39 +0000] "GET /backend-api/hello HTTP/1.1" 200 53 "172.18.0.3:8082" "0.311"
-172.18.0.4 - - [06/Jun/2025:11:53:18 +0000] "GET /backend-api/hello HTTP/1.1" 200 53 "172.18.0.3:8082" "0.007"
-172.18.0.4 - - [06/Jun/2025:12:07:51 +0000] "GET /backend-api/hello HTTP/1.1" 200 53 "172.18.0.3:8082" "0.013"
-172.18.0.4 - - [06/Jun/2025:12:32:06 +0000] "GET /backend-api/hello HTTP/1.1" 200 53 "172.18.0.3:8082" "0.142"
-172.18.0.4 - - [06/Jun/2025:12:32:29 +0000] "GET /backend-api/data HTTP/1.1" 200 60 "172.18.0.3:8082" "0.004"
-172.18.0.4 - - [06/Jun/2025:12:32:35 +0000] "GET /backend2-api/hello HTTP/1.1" 200 54 "172.18.0.5:8083" "0.161"
+172.18.0.5 - - [10/Jun/2025:09:45:23 +0000]GET /backend-api/hello HTTP/1.120053172.18.0.3:80820.088
+172.18.0.5 - - [10/Jun/2025:09:45:23 +0000]GET /backend-api/data HTTP/1.120060172.18.0.3:80820.004
+172.18.0.5 - - [10/Jun/2025:09:45:23 +0000]GET /backend2-api/hello HTTP/1.120054172.18.0.4:80830.101
+remote: 172.18.0.5 - user: - [10/Jun/2025:09:53:24 +0000]GET /backend-api/hello HTTP/1.120053172.18.0.3:80820.088-
+remote: 172.18.0.5 - user: - [10/Jun/2025:09:53:24 +0000]GET /backend-api/data HTTP/1.120060172.18.0.3:80820.003-
+remote: 172.18.0.5 - user: - [10/Jun/2025:09:53:24 +0000]GET /backend2-api/hello HTTP/1.120054172.18.0.4:80830.093-
+remote_addr: 172.18.0.5 - remote_user: - [10/Jun/2025:09:59:04 +0000]request:GET /backend-api/hello HTTP/1.1status:200body_bytes_sent: 53upstream_addr:172.18.0.3:8082upstream_response_time:0.106request_body:-
+remote_addr: 172.18.0.5 - remote_user: - [10/Jun/2025:09:59:04 +0000]request:GET /backend-api/data HTTP/1.1status:200body_bytes_sent: 60upstream_addr:172.18.0.3:8082upstream_response_time:0.004request_body:-
+remote_addr: 172.18.0.5 - remote_user: - [10/Jun/2025:09:59:04 +0000]request:GET /backend2-api/hello HTTP/1.1status:200body_bytes_sent: 54upstream_addr:172.18.0.4:8083upstream_response_time:0.093request_body:-
+[10/Jun/2025:10:01:20 +0000] remote_addr: 172.18.0.5 - remote_user: - request:GET /backend-api/hello HTTP/1.1 status:200 bytes: 53 upstream_addr:172.18.0.3:8082 upstream_response_time:0.077 
+[10/Jun/2025:10:01:21 +0000] remote_addr: 172.18.0.5 - remote_user: - request:GET /backend-api/data HTTP/1.1 status:200 bytes: 60 upstream_addr:172.18.0.3:8082 upstream_response_time:0.003 
+[10/Jun/2025:10:01:21 +0000] remote_addr: 172.18.0.5 - remote_user: - request:GET /backend2-api/hello HTTP/1.1 status:200 bytes: 54 upstream_addr:172.18.0.4:8083 upstream_response_time:0.094 
+[10/Jun/2025:10:06:59 +0000] origi: 172.18.0.5 - remote_user: - request: GET /backend-api/hello HTTP/1.1 status: 200 bytes: 53 dest: 172.18.0.3:8082 response-time: 0.095 
+[10/Jun/2025:10:06:59 +0000] origi: 172.18.0.5 - remote_user: - request: GET /backend-api/data HTTP/1.1 status: 200 bytes: 60 dest: 172.18.0.3:8082 response-time: 0.004 
+[10/Jun/2025:10:06:59 +0000] origi: 172.18.0.5 - remote_user: - request: GET /backend2-api/hello HTTP/1.1 status: 200 bytes: 54 dest: 172.18.0.4:8083 response-time: 0.099 
+[10/Jun/2025:10:08:00 +0000] origi: 172.18.0.5 - remote_user: - - request: GET /backend-api/hello HTTP/1.1 - status: 200 - bytes: 53 - dest: 172.18.0.3:8082 - response-time: 0.096 
+[10/Jun/2025:10:08:00 +0000] origi: 172.18.0.5 - remote_user: - - request: GET /backend-api/data HTTP/1.1 - status: 200 - bytes: 60 - dest: 172.18.0.3:8082 - response-time: 0.004 
+[10/Jun/2025:10:08:00 +0000] origi: 172.18.0.5 - remote_user: - - request: GET /backend2-api/hello HTTP/1.1 - status: 200 - bytes: 54 - dest: 172.18.0.4:8083 - response-time: 0.081 
+[10/Jun/2025:10:26:03 +0000] origi: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 53 ,dest: 172.18.0.3:8082 ,response-time: 0.092 
+[10/Jun/2025:10:26:03 +0000] origi: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 60 ,dest: 172.18.0.3:8082 ,response-time: 0.003 
+[10/Jun/2025:10:26:03 +0000] origi: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,dest: 172.18.0.4:8083 ,response-time: 0.098 

@@ -1,0 +1,2 @@
+2025/06/10 09:51:06 [emerg] 1#1: unknown "user" variable
+2025/06/10 10:09:20 [emerg] 1#1: unexpected end of file, expecting ";" or "}" in /etc/nginx/log_format.conf:17
