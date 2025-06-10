@@ -9,3 +9,7 @@
 2025/06/10 11:52:37 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" version 1026003 instead of 1027005 in /etc/nginx/nginx.conf:1
 2025/06/10 11:53:20 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" version 1026003 instead of 1027005 in /etc/nginx/nginx.conf:1
 2025/06/10 12:00:28 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" is not binary compatible in /etc/nginx/nginx.conf:1
+2025/06/10 12:09:36 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" is not binary compatible in /etc/nginx/nginx.conf:1
+2025/06/10 12:44:40 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" is not binary compatible in /etc/nginx/nginx.conf:1
+2025/06/10 12:49:57 [emerg] 1#1: module "/etc/nginx/modules/ndk_http_module.so" is not binary compatible in /etc/nginx/nginx.conf:1
+2025/06/10 12:51:18 [emerg] 1#1: unknown directive "lua_need_request_body" in /etc/nginx/nginx.conf:27

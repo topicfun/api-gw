@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    build: ./nginx
+    image: openresty/openresty:alpine
     # NINCS port mapping kívülre! Csak a belső hálózaton keresztül érhető el.
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
