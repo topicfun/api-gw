@@ -1,0 +1,136 @@
+zuul:
+  host:
+    max-per-route-connections: 100
+    max-total-connections: 1000
+    connect-timeout-millis: ${APIGW_TIMEOUT:30000}
+    socket-timeout-millis: ${APIGW_TIMEOUT:30000}
+  forceOriginalQueryStringEncoding: true
+  sensitiveHeaders:
+  routes:
+
+# common DXL services
+
+    configAPI:
+      path: /api/configAPI/**
+      url: http://dxl-client-config-svc:8080/api/configAPI
+
+    userDataAPI:
+      path: /api/userDataAPI/**
+      url: http://dxl-userdata-svc:8080/api/userDataAPI
+
+    userActionAPI:
+      path: /api/userActionAPI/**
+      url: http://dxl-useraction-svc:8080/api/userActionAPI
+
+    cacheMgrAPI:
+      path: /api/cacheMgrAPI/**
+      url: http://dxl-cache-mgr-svc:8080/api/cacheMgrAPI
+
+    contentLoaderAPI:
+      path: /api/contentLoaderAPI/**
+      url: http://dxl-content-loader-svc:8080/api/contentLoaderAPI
+
+    csmInteraction:
+      path: /csm/**
+      url: ${CSM_APIGW_URL:http://itdevauttst2.vodafone.hu:8400}
+
+# netcracker DXL services
+
+    oxAuth:
+      path: /oxauth/**
+      url: http://dxl-sgw-sim-svc:8080/oxauth
+
+    simulate:
+      path: /simulate/**
+      url: http://dxl-sgw-sim-svc:8080/simulate
+
+    token:
+      path: /token/**
+      url: http://dxl-sgw-sim-svc:8080/token
+
+    session:
+      path: /session/**
+      url: http://dxl-sgw-sim-svc:8080/session
+
+    userInfoAPI:
+      path: /api/userInfoAPI/**
+      url: http://dxl-sgw-sim-svc:8080/api/userInfoAPI
+
+    accountManagementAPI-nc:
+      path: /tmf-api/accountManagement/**
+      url: http://dxl-account-tmf666:8080/tmf-api/accountManagement
+
+    agreementAPI-nc:
+      path: /tmf-api/agreementManagement/**
+      url: http://dxl-agreement-tmf651:8080/tmf-api/agreementManagement
+
+    customerBillManagementAPI-nc:
+      path: /tmf-api/customerBillManagement/**
+      url: http://dxl-billing-tmf678:8080/tmf-api/customerBillManagement
+
+    customerManagementAPI-nc:
+      path: /tmf-api/customerManagement/**
+      url: http://dxl-customer-tmf629:8080/tmf-api/customerManagement
+
+    geographicAddressManagementAPI-nc:
+      path: /tmf-api/geographicAddressManagement/**
+      url: http://dxl-geo-address-tmf673:8080/tmf-api/geographicAddressManagement
+
+    partyInteraction-nc:
+      path: /tmf-api/partyInteraction/**
+      url: http://dxl-party-int-tmf683:8080/tmf-api/partyInteraction
+
+    paymentManagement-nc:
+      path: /tmf-api/paymentManagement/**
+      url: http://dxl-payment-tmf676:8080/tmf-api/paymentManagement
+
+    productInventoryAPI-nc:
+      path: /tmf-api/productInventory/**
+      url: http://dxl-product-inv-tmf637:8080/tmf-api/productInventory
+
+    productOrderingAPI-nc:
+      path: /tmf-api/productOrderingManagement/**
+      url: http://dxl-product-ord-tmf622:8080/tmf-api/productOrderingManagement
+
+    productCatalogAPI-nc:
+      path: /tmf-api/productCatalogManagement/**
+      url: http://dxl-product-cat-tmf620:8080/tmf-api/productCatalogManagement
+
+    prepayBalanceManagementAPI-nc:
+      path: /tmf-api/prepayBalanceManagement/**
+      url: http://dxl-topup-tmf654:8080/tmf-api/prepayBalanceManagement
+
+    privacyManagementAPI-nc:
+      path: /tmf-api/privacyManagement/**
+      url: http://dxl-privacy-tmf644:8080/tmf-api/privacyManagement
+
+    partyRoleAPI-nc:
+      path: /tmf-api/partyRoleManagement/**
+      url: http://dxl-party-role-tmf669:8080/tmf-api/partyRoleManagement
+
+    partyAPI-nc:
+      path: /tmf-api/party/**
+      url: http://dxl-party-tmf632:8080/tmf-api/party
+
+    recommendationAPI-nc:
+      path: /tmf-api/customer/**
+      url: http://dxl-recomm-tmf680:8080/tmf-api/customer
+
+    usageConsumptionManagementAPI-nc:
+      path: /tmf-api/usageConsumptionManagement/**
+      url: http://dxl-usage-cons-tmf677:8080/tmf-api/usageConsumptionManagement
+
+# TMFC001 services
+    promotionManagementAPI:
+      path: /tmf-api/promotionManagement/**
+      url: ${TMFC001_APIGW_URL:https://tmfc001-fat2.apps.okdtest.vodafone.hu:8080}/tmf-api/promotionManagement
+
+# RESOURCEMANAGEMENT services
+
+    resourceManagementAPI-VTVAdapter:
+      path: /VTVAdapter/tmf-api/resourceInventoryManagement/**
+      url: ${RESOURCEMANAGEMENT_APIGW_URL:https://resourcemanagement-fat2.apps.okdtest.vodafone.hu:8080}/VTVAdapter/tmf-api/resourceInventory
+
+    resourceManagementAPI-BSS2CloudAdapter:
+      path: /BSS2CloudAdapter/tmf-api/resourceInventoryManagement/**
+      url: ${RESOURCEMANAGEMENT_APIGW_URL:https://resourcemanagement-fat2.apps.okdtest.vodafone.hu:8080}/BSS2CloudAdapter/tmf-api/resourceInventory
