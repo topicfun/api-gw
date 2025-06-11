@@ -17,8 +17,9 @@ the Lua logger:
 
 * `APP_LOG_INCLUDE_HEADERS` – set to `false` to omit request/response headers.
 * `APP_LOG_INCLUDE_BODY` – set to `false` to omit request/response bodies.
-* `APP_LOG_HEADER_PARAM` – comma-separated list of request header names to log
-  under `header_param` even when `APP_LOG_INCLUDE_HEADERS` is `false`.
+* `APP_LOG_HEADER_PARAM` – comma-separated list of header names to log under
+  `header_param` in both the request and response sections even when
+  `APP_LOG_INCLUDE_HEADERS` is `false`.
 
 All options default to logging everything.
 
