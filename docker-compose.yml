@@ -4,9 +4,9 @@ services:
   nginx:
     image: openresty/openresty:alpine
     environment:
-      APP_LOG_INCLUDE_HEADERS: "true"
+      APP_LOG_INCLUDE_HEADERS: "false"
       APP_LOG_INCLUDE_BODY: "false"
-      APP_LOG_HEADER_PARAM: "x-app-header"
+      APP_LOG_HEADER_PARAM: "x-app-header,x-demo-header"
     volumes:
       # Mount the configuration directly into OpenResty's default path
       - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
