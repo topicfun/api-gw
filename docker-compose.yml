@@ -3,7 +3,10 @@ version: '3.8'
 services:
   nginx:
     image: openresty/openresty:alpine
-    # NINCS port mapping kívülre! Csak a belső hálózaton keresztül érhető el.
+    environment:
+      APP_LOG_INCLUDE_HEADERS: "true"     # vagy "false"
+      APP_LOG_INCLUDE_BODY: "false"        # vagy "false"
+      APP_LOG_HEADER_PARAM: "x-app-header"    # tetszőleges fejlécnév
     volumes:
       # Mount the configuration directly into OpenResty's default path
       - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro

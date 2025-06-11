@@ -37,3 +37,15 @@
 [11/Jun/2025:08:13:29 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 62 ,to: 172.18.0.3:8082 ,response-time: 0.115 
 [11/Jun/2025:08:13:29 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 69 ,to: 172.18.0.3:8082 ,response-time: 0.003 
 [11/Jun/2025:08:13:29 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,to: 172.18.0.4:8083 ,response-time: 0.092 
+[11/Jun/2025:08:55:33 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 62 ,to: 172.18.0.3:8082 ,response-time: 0.099 
+[11/Jun/2025:08:55:33 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 69 ,to: 172.18.0.3:8082 ,response-time: 0.003 
+[11/Jun/2025:08:55:33 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,to: 172.18.0.4:8083 ,response-time: 0.105 
+[11/Jun/2025:08:56:48 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 62 ,to: 172.18.0.3:8082 ,response-time: 0.103 
+[11/Jun/2025:08:56:48 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 69 ,to: 172.18.0.3:8082 ,response-time: 0.005 
+[11/Jun/2025:08:56:49 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,to: 172.18.0.4:8083 ,response-time: 0.136 
+[11/Jun/2025:09:01:22 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 62 ,to: 172.18.0.3:8082 ,response-time: 0.102 
+[11/Jun/2025:09:01:22 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 69 ,to: 172.18.0.3:8082 ,response-time: 0.004 
+[11/Jun/2025:09:01:22 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,to: 172.18.0.4:8083 ,response-time: 0.093 
+[11/Jun/2025:09:02:47 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/hello HTTP/1.1 ,status: 200 ,bytes: 62 ,to: 172.18.0.3:8082 ,response-time: 0.097 
+[11/Jun/2025:09:02:47 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend-api/data HTTP/1.1 ,status: 200 ,bytes: 69 ,to: 172.18.0.3:8082 ,response-time: 0.004 
+[11/Jun/2025:09:02:48 +0000] from: 172.18.0.5, remote_user: - ,request: GET /backend2-api/hello HTTP/1.1 ,status: 200 ,bytes: 54 ,to: 172.18.0.4:8083 ,response-time: 0.090 
