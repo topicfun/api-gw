@@ -23,3 +23,7 @@ the Lua logger:
 
 All options default to logging everything.
 
+
+## Route configuration
+
+Routes between incoming paths and backend services are defined in `nginx/routes.conf`. This file is mounted into the container and can be modified without changing `nginx.conf`. The initial configuration contains routes for `client-backend` and `backend2`. Additional mappings from the legacy Zuul setup found in `My/application.yml` can be added to this file following the same pattern.
