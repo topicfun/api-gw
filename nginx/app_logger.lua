@@ -13,7 +13,13 @@ if b_env and b_env:lower() == "false" then
   include_body = false
 end
 
-local header_param_name = os.getenv("APP_LOG_HEADER_PARAM")
+local header_param_env = os.getenv("APP_LOG_HEADER_PARAM")
+local header_param_names = {}
+if header_param_env then
+  for name in string.gmatch(header_param_env, "[^,%s]+") do
+    header_param_names[#header_param_names+1] = name
+  end
+end
 
 local req_headers = include_headers and ngx.req.get_headers() or nil
 local req_body = include_body and (ngx.var.request_body or "") or nil
@@ -21,8 +27,16 @@ local resp_headers = include_headers and ngx.resp.get_headers() or nil
 local resp_body = include_body and (ngx.ctx.resp_body or "") or nil
 
 local header_param_value
-if header_param_name and req_headers then
-  header_param_value = req_headers[header_param_name]
+if #header_param_names > 0 then
+  local header_source = req_headers or ngx.req.get_headers()
+  if #header_param_names == 1 then
+    header_param_value = header_source[header_param_names[1]]
+  else
+    header_param_value = {}
+    for _, name in ipairs(header_param_names) do
+      header_param_value[name] = header_source[name]
+    end
+  end
 end
 
 -- build request JSON manually so headers come before body
