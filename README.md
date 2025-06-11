@@ -4,24 +4,14 @@ This repository contains a small demo with Nginx acting as a reverse proxy for m
 
 ## Log configuration
 
-Logging is controlled by the YAML file `nginx/log_config.yaml`. The file has a single key `mode` with the following values:
+### Access log
 
-- `headers` – log request/response headers (default)
-- `body` – also log the request body
-- any other value – disable logging
+`nginx/log_format.conf` generate access log  
 
-After editing `log_config.yaml`, run:
-
-```bash
-python3 nginx/generate_log_conf.py
-```
-
-to regenerate `nginx/log_format.conf`. The `docker-compose` setup mounts this generated file and disables the default Nginx logs (`access.log` and `error.log`).
-
-Nginx also writes an `application.log` file that contains the full request and response (headers and body) using Lua scripts. The log is located under `nginx/logs/` inside the container.
 
 ### Application log options
 
+Nginx also writes an `application.log` file that contains the full request and response (headers and body) using Lua scripts. The log is located under `nginx/logs/` inside the container.
 The behaviour of `application.log` can be tuned through environment variables used by
 the Lua logger:
 
@@ -31,4 +21,3 @@ the Lua logger:
 
 All options default to logging everything.
 
-The Nginx image is built from the `nginx/Dockerfile`. Run `docker-compose build nginx` whenever the configuration or Lua scripts change.
