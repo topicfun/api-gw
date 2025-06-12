@@ -24,14 +24,14 @@ public class ClientController {
     public Mono<Message> callBackendHello() {
         log.info("client calls Hello");
         return apiService.getHelloMessageFromBackend()
-                .onErrorReturn(new Message("Backend Hello Service is currently unavailable. Please try again later.")); // <-- Hiba esetén fallback üzenet
+                .onErrorReturn(new Message("Backend Hello Service is currently unavailable. Please try again later.")); // <-- fallback message on error
     }
 
     @GetMapping("/callData")
     public Mono<Message> callBackendData() {
         log.info("client calls Data");
         return apiService.getDataFromBackend()
-                .onErrorReturn(new Message("Backend Data Service is currently unavailable.")); // <-- Hiba esetén fallback üzenet
+                .onErrorReturn(new Message("Backend Data Service is currently unavailable.")); // <-- fallback message on error
     }
 
     @GetMapping("/callConfigAPI")
