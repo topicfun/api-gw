@@ -17,7 +17,8 @@ foreach ($c in $containers) {
 # /usr/local/openresty/nginx/conf so our routes
 # and Lua logging are active.
 Write-Host "Starting nginx proxy with docker-compose..."
-docker compose up -d nginx
+#docker compose up -d nginx
+docker compose --env-file .env.dev up -d nginx
 
 $networkName = "api-gw_app_network"
 
