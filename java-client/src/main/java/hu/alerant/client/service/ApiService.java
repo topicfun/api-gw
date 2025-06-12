@@ -87,10 +87,6 @@ public class ApiService {
         return makeRequest("/backend-api/data", Message.class); // Útvonal az Nginx-hez
     }
 
-    public Mono<Message> getHelloMessageFromBackend2() {
-        return makeRequest("/backend2-api/hello", Message.class);
-    }
-
     public Mono<Message> callConfigAPI() {
         return makeRequest("/api/configAPI", Message.class);
     }

@@ -27,8 +27,8 @@ Start-Sleep -Seconds 5
 # Step 2: build application images
 Write-Host "Building java-backend image..."
 docker build -t java-backend ./java-backend
-Write-Host "Building java-backend2 image..."
-docker build -t java-backend2 ./java-backend2
+Write-Host "Building dxl-client-config-svc image..."
+docker build -t dxl-client-config-svc ./java-backend2
 Write-Host "Building java-client image..."
 docker build -t java-client ./java-client
 
@@ -36,18 +36,17 @@ docker build -t java-client ./java-client
 Write-Host "Starting java-backend container..."
 docker run -d --name java-backend --network $networkName -p 8082:8082 -e SERVER_PORT=8082 java-backend
 Write-Host "Starting dxl-client-config-svc container..."
-docker run -d --name dxl-client-config-svc --network $networkName -p 8080:8080 -e SERVER_PORT=8080 java-backend2
+docker run -d --name dxl-client-config-svc --network $networkName -p 8080:8080 -e SERVER_PORT=8080 dxl-client-config-svc
 Write-Host "Starting java-client container..."
 docker run -d --name java-client --network $networkName -p 8081:8081 -e SERVER_PORT=8081 java-client
 
 # Wait for applications to start
-Start-Sleep -Seconds 10
+Start-Sleep -Seconds 15
 
 # Step 4: call the client endpoints and print the responses
 $endpoints = @(
     "http://localhost:8081/client/callHello",
     "http://localhost:8081/client/callData",
-    "http://localhost:8081/client/callBackend2Hello",
     "http://localhost:8081/client/callConfigAPI"
 )
 
