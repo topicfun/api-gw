@@ -90,4 +90,8 @@ public class ApiService {
     public Mono<Message> getHelloMessageFromBackend2() {
         return makeRequest("/backend2-api/hello", Message.class);
     }
+
+    public Mono<Message> callConfigAPI() {
+        return makeRequest("/api/configAPI", Message.class);
+    }
 }

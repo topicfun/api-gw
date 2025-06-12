@@ -4,7 +4,7 @@
 Write-Host "Stopping running containers if they exist..."
 docker compose down
 
-$containers = @("java-backend", "java-backend2", "java-client")
+$containers = @("java-backend", "dxl-client-config-svc", "java-client")
 foreach ($c in $containers) {
     if (docker ps -a --format '{{.Names}}' | Where-Object { $_ -eq $c }) {
         Write-Host "Removing container $c..."
@@ -35,8 +35,8 @@ docker build -t java-client ./java-client
 # Step 3: run the containers on the compose network
 Write-Host "Starting java-backend container..."
 docker run -d --name java-backend --network $networkName -p 8082:8082 -e SERVER_PORT=8082 java-backend
-Write-Host "Starting java-backend2 container..."
-docker run -d --name java-backend2 --network $networkName -p 8083:8083 -e SERVER_PORT=8083 java-backend2
+Write-Host "Starting dxl-client-config-svc container..."
+docker run -d --name dxl-client-config-svc --network $networkName -p 8080:8080 -e SERVER_PORT=8080 java-backend2
 Write-Host "Starting java-client container..."
 docker run -d --name java-client --network $networkName -p 8081:8081 -e SERVER_PORT=8081 java-client
 
@@ -47,7 +47,8 @@ Start-Sleep -Seconds 10
 $endpoints = @(
     "http://localhost:8081/client/callHello",
     "http://localhost:8081/client/callData",
-    "http://localhost:8081/client/callBackend2Hello"
+    "http://localhost:8081/client/callBackend2Hello",
+    "http://localhost:8081/client/callConfigAPI"
 )
 
 foreach ($url in $endpoints) {

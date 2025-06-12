@@ -40,4 +40,11 @@ public class ClientController {
         return apiService.getHelloMessageFromBackend2()
                 .onErrorReturn(new Message("Backend2 Hello Service is currently unavailable."));
     }
+
+    @GetMapping("/callConfigAPI")
+    public Mono<Message> callConfigAPI() {
+        log.info("client calls configAPI");
+        return apiService.callConfigAPI()
+                .onErrorReturn(new Message("ConfigAPI service unavailable."));
+    }
 }
