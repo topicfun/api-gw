@@ -3,6 +3,8 @@ version: '3.8'
 services:
   nginx:
     image: openresty/openresty:alpine
+    env_file:
+      - .env.dev
     volumes:
       # Mount the configuration directly into OpenResty's default path
       - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
@@ -13,18 +15,18 @@ services:
       - ./nginx/logs:/var/log/nginx
     networks:
       - app_network
-    # Nincs depends_on, az Nginx rugalmas a resolver miatt.
+    # No depends_on; Nginx is flexible because of the resolver.
 
 #  java-client:
 #    build: ./java-client
 #    restart: always
 #    ports:
-#      - "8081:8081" # Külső kérés erre a portra jön (böngészőből)
-#      # A host gép 80-as portját képezi le a konténer 8081-es portjára.
+#      - "8081:8081" # External requests arrive on this port (from a browser)
+#      # Maps host port 80 to container port 8081.
 #    networks:
 #      - app_network
 #    environment:
-#      SERVER_PORT: 8081 # A kliens alkalmazás portja
+#      SERVER_PORT: 8081 # Client application port
 #    healthcheck:
 #      test: ["CMD-SHELL", "curl -f http://localhost:8081/actuator/health || exit 1"]
 #      interval: 10s
@@ -36,11 +38,11 @@ services:
 #    build: ./java-backend
 #    restart: always
 #    ports:
-#      - "8082:8082" # Külső kérés erre a portra jön (böngészőből)
+#      - "8082:8082" # External requests arrive on this port (from a browser)
 #    networks:
 #      - app_network
 #    environment:
-#      SERVER_PORT: 8082 # A backend alkalmazás portja
+#      SERVER_PORT: 8082 # Backend application port
 #    healthcheck:
 #      test: ["CMD-SHELL", "curl -f http://localhost:8082/actuator/health || exit 1"]
 #      interval: 10s

@@ -12,17 +12,17 @@ package hu.alerant.client.service;
 //
 //    private final WebClient webClient;
 //
-//    // A konstruktorban injektáljuk a WebClient-et
+//    // Inject the WebClient via the constructor
 //    public ApiService(WebClient.Builder webClientBuilder) {
-//        // A 'http://java-backend:8080' URI a Docker hálózaton belüli kommunikációhoz
-//        // Figyelem: A /api/ prefixet itt nem használjuk, mert a WebClient közvetlenül a backendhez szól,
-//        // nem az Nginx-en keresztül. Az Nginx csak a külső kéréseket proxizza.
+//        // The 'http://java-backend:8080' URI is for communication inside the Docker network
+//        // Note: We don't use the /api/ prefix here because the WebClient communicates directly with the backend,
+//        // not through Nginx. Nginx only proxies external requests.
 //        this.webClient = webClientBuilder.baseUrl("http://java-backend:8080").build();
 //    }
 //
 //    public Mono<Message> getHelloMessageFromBackend() {
 //        return webClient.get()
-//                .uri("/api/hello") // Az API végpontja
+//                .uri("/api/hello") // API endpoint
 //                .accept(MediaType.APPLICATION_JSON)
 //                .retrieve()
 //                .bodyToMono(Message.class);
@@ -54,14 +54,14 @@ public class ApiService {
     private final WebClient webClient;
 
     public ApiService(WebClient.Builder webClientBuilder) {
-        // A WebClient most a 'nginx' konténer nevét hívja a Docker hálózaton belül,
-        // annak alapértelmezett 80-as HTTP portján.
+        // The WebClient now calls the 'nginx' container name within the Docker network,
+        // using its default HTTP port 80.
         this.webClient = webClientBuilder.baseUrl("http://nginx").build();
     }
 
     private <T> Mono<T> makeRequest(String path, Class<T> responseType) {
         return webClient.get()
-                .uri(path) // Az útvonal már tartalmazza a proxy prefixet, pl. /backend-api/hello
+                .uri(path) // Path already includes the proxy prefix, e.g., /backend-api/hello
                 .header("X-App-Header", "from-client")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -80,11 +80,11 @@ public class ApiService {
     }
 
     public Mono<Message> getHelloMessageFromBackend() {
-        return makeRequest("/backend-api/hello", Message.class); // Útvonal az Nginx-hez, amit az Nginx proxizni fog
+        return makeRequest("/backend-api/hello", Message.class); // Path to Nginx which will be proxied
     }
 
     public Mono<Message> getDataFromBackend() {
-        return makeRequest("/backend-api/data", Message.class); // Útvonal az Nginx-hez
+        return makeRequest("/backend-api/data", Message.class); // Path to Nginx
     }
 
     public Mono<Message> callConfigAPI() {

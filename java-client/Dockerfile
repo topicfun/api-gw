@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY target/*.jar app.jar
-# A kliens alkalmazás futhat más porton, pl. 8081-en
+# The client application can run on another port, e.g., 8081
 EXPOSE 8081
 CMD ["java", "-jar", "app.jar"]
