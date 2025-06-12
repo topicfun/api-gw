@@ -23,6 +23,10 @@ the Lua logger:
 
 All options default to logging everything.
 
+The provided `docker-compose.yml` loads these variables from `.env.dev` and
+passes them to the Nginx container. Adjust the values in that file to control
+what the Lua logger records.
+
 
 ## Route configuration
 
