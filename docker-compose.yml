@@ -13,8 +13,6 @@ services:
       - ./nginx/app_logger_body.lua:/usr/local/openresty/nginx/conf/app_logger_body.lua:ro
       - ./nginx/routes.conf:/usr/local/openresty/nginx/conf/routes.conf:ro
       - ./nginx/logs:/var/log/nginx
-    # Docker Compose already injects them from your .env.dev file.
-#    command: /bin/sh -c "envsubst < /etc/nginx/templates/nginx.conf.template > /usr/local/openresty/nginx/conf/nginx.conf && /usr/local/openresty/bin/openresty -g 'daemon off;'"
     networks:
       - app_network
     # No depends_on; Nginx is flexible because of the resolver.
