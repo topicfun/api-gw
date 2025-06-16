@@ -1,0 +1,13 @@
+image:
+  repository: api-gw
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+env:
+  APP_LOG_INCLUDE_HEADERS: "false"
+  APP_LOG_INCLUDE_BODY: "false"
+  APP_LOG_HEADER_PARAM: "x-app-header,x-demo-header"
+
+service:
+  type: ClusterIP
+  port: 80

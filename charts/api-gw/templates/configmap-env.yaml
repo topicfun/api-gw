@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "api-gw.fullname" . }}-env
+  labels:
+    {{- include "api-gw.labels" . | nindent 4 }}
+data:
+  APP_LOG_INCLUDE_HEADERS: "{{ .Values.env.APP_LOG_INCLUDE_HEADERS }}"
+  APP_LOG_INCLUDE_BODY: "{{ .Values.env.APP_LOG_INCLUDE_BODY }}"
+  APP_LOG_HEADER_PARAM: "{{ .Values.env.APP_LOG_HEADER_PARAM }}"

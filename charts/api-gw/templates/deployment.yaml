@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "api-gw.fullname" . }}
+  labels:
+    {{- include "api-gw.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{- include "api-gw.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: {{ include "api-gw.fullname" . }}-env
+          volumeMounts:
+            - name: config
+              mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+              subPath: nginx.conf
+            - name: config
+              mountPath: /usr/local/openresty/nginx/conf/log_format.conf
+              subPath: log_format.conf
+            - name: config
+              mountPath: /usr/local/openresty/nginx/conf/app_logger.lua
+              subPath: app_logger.lua
+            - name: config
+              mountPath: /usr/local/openresty/nginx/conf/app_logger_body.lua
+              subPath: app_logger_body.lua
+            - name: config
+              mountPath: /usr/local/openresty/nginx/conf/routes.conf
+              subPath: routes.conf
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "api-gw.fullname" . }}-config
