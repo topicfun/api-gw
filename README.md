@@ -31,3 +31,30 @@ what the Lua logger records.
 ## Route configuration
 
 Routes between incoming paths and backend services are defined in `nginx/routes.conf`. This file is mounted into the container and can be modified without changing `nginx.conf`. The initial configuration contains routes for `client-backend` and `backend2`. Additional mappings from the legacy Zuul setup found in `My/application.yml` can be added to this file following the same pattern.
+
+## Local testing with Docker Compose
+
+Use `test-nginx-route.sh` to start the Nginx container and verify that the routing rules work. The script launches only the gateway and issues a request from a temporary curl container. A `502` status code is expected because no backend services are running.
+
+```bash
+./test-nginx-route.sh
+```
+
+## Deploying with Helm
+
+A Helm chart is available in `charts/api-gw` for Kubernetes deployments. Build the Docker image and install the chart:
+
+```bash
+docker build -t api-gw .
+helm install api-gw ./charts/api-gw \
+  --set image.repository=api-gw \
+  --set image.tag=latest
+```
+
+The `test-helm-chart.sh` script automates a simple test installation in a temporary namespace and performs the same route check as the compose script.
+
+```bash
+./test-helm-chart.sh
+```
+
+Both scripts require Docker and Helm to be installed.
