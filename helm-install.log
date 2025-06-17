@@ -1,0 +1,8 @@
+history.go:56: 2025-06-17 08:55:09.8936874 +0200 CEST m=+0.134470301 [debug] getting history for release api-gw-test
+install.go:225: 2025-06-17 08:55:09.8996649 +0200 CEST m=+0.140447801 [debug] Original chart version: ""
+install.go:242: 2025-06-17 08:55:09.8996649 +0200 CEST m=+0.140447801 [debug] CHART PATH: C:\D\Repo\ONE\api-gw\charts\api-gw
+
+client.go:144: 2025-06-17 08:55:10.1008912 +0200 CEST m=+0.341674101 [debug] creating 4 resource(s)
+wait.go:50: 2025-06-17 08:55:10.1288437 +0200 CEST m=+0.369626601 [debug] beginning wait for 4 resources with timeout of 5m0s
+ready.go:297: 2025-06-17 08:55:10.1538104 +0200 CEST m=+0.394593301 [debug] Deployment is not ready: api-gw-test/api-gw-test-api-gw. observedGeneration (0) does not match spec generation (1).
+wait.go:87: 2025-06-17 08:55:12.1515988 +0200 CEST m=+2.392381701 [debug] wait for resources succeeded within 2s
