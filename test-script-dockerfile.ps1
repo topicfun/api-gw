@@ -2,15 +2,8 @@
 
 # Step 1: stop any running containers so we can rebuild them
 Write-Host "Stopping running containers if they exist..."
-docker compose down
-
-$containers = @("java-backend", "dxl-client-config-svc", "java-client")
-foreach ($c in $containers) {
-    if (docker ps -a --format '{{.Names}}' | Where-Object { $_ -eq $c }) {
-        Write-Host "Removing container $c..."
-        docker rm -f $c | Out-Null
-    }
-}
+docker stop $(docker ps -q)
+docker rm $(docker ps --no-trunc -aq)
 
 # Start the nginx proxy with the latest configuration.
 # Docker Compose mounts the files into
@@ -19,8 +12,10 @@ foreach ($c in $containers) {
 # Write-Host "Starting nginx proxy with docker-compose..."
 # docker-compose will read `.env.dev` via `env_file` in the compose file
 # docker compose up -d nginx
-
+Write-Host "Starting nginx proxy with docker file..."
 $networkName = "api-gw_app_network"
+docker build -t api-gw:latest .
+docker run -d --name nginx --network $networkName api-gw:latest
 
 # Wait a few seconds for nginx to be ready
 Start-Sleep -Seconds 5
@@ -61,4 +56,17 @@ foreach ($url in $endpoints) {
     }
 }
 
-Write-Host "\nTesting complete."
+Write-Host "\nTesting 1 complete."
+
+foreach ($url in $endpoints) {
+    Write-Host "\nCalling $url"
+    try {
+        $response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop
+        Write-Host $response.Content
+    } catch {
+        Write-Warning "Request to $url failed: $_"
+    }
+}
+
+Write-Host "\nTesting 2 complete."
+

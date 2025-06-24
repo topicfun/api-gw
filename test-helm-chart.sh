@@ -3,9 +3,11 @@
 
 set -euo pipefail
 
-# Set Docker environment to Minikube's Docker daemon
+# Set Docker environment to Minikube's Docker daemon if available
 # shellcheck disable=SC2046
-eval $(minikube -p minikube docker-env --shell bash)
+if command -v minikube >/dev/null 2>&1; then
+  eval $(minikube -p minikube docker-env --shell bash)
+fi
 
 # Fail fast if kubectl cannot reach a cluster so that Helm does not hang
 if ! kubectl cluster-info >/dev/null 2>&1; then
@@ -15,6 +17,9 @@ fi
 
 RELEASE=api-gw-test
 NAMESPACE=api-gw-test
+CHART_NAME=api-gw
+DEPLOYMENT="${RELEASE}-${CHART_NAME}"
+SERVICE="${DEPLOYMENT}"
 
 cleanup() {
   helm uninstall "$RELEASE" -n "$NAMESPACE" >/dev/null 2>&1 || true
@@ -44,12 +49,13 @@ printf 'Pods status after install:\n'
 kubectl get pods -n "$NAMESPACE" || true
 
 printf 'Checking deployment status...\n'
-kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE"
+kubectl rollout status deployment/"$DEPLOYMENT" -n "$NAMESPACE"
 
 printf 'Issuing test request...\n'
 status=$(kubectl run curl --rm -i --restart=Never -n "$NAMESPACE" \
-  --image=curlimages/curl:8.5.0 -- \
-  -s -o /dev/null -w '%{http_code}' http://"$RELEASE"/api/configAPI/ || true)
+  --image=curlimages/curl:8.5.0 --command -- \
+  curl -s -o /dev/null -w '%{http_code}' http://"$SERVICE"/api/configAPI/ 2>&1 | \
+  grep -Eo '[0-9]{3}' | head -n1 || true)
 
 if [ "$status" = "502" ]; then
   echo "Helm chart test successful: received $status as expected."

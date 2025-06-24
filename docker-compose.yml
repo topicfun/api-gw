@@ -11,7 +11,7 @@ services:
       - ./nginx/log_format.conf:/usr/local/openresty/nginx/conf/log_format.conf:ro
       - ./nginx/app_logger.lua:/usr/local/openresty/nginx/conf/app_logger.lua:ro
       - ./nginx/app_logger_body.lua:/usr/local/openresty/nginx/conf/app_logger_body.lua:ro
-      - ./nginx/routes.conf:/usr/local/openresty/nginx/conf/routes.conf:ro
+      - ./nginx/routes.conf:/usr/local/openresty/nginx/route/routes.conf:ro
       - ./nginx/logs:/var/log/nginx
     networks:
       - app_network

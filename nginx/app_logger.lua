@@ -68,7 +68,7 @@ parts[#parts+1] = '"status":' .. tostring(ngx.status)
 
 local log_line = "{" .. table.concat(parts, ",") .. "}\n"
 
-local f = io.open("/var/log/nginx/application.log", "a")
+local f = io.stdout
 if f then
   f:write(log_line)
   f:close()
