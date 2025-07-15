@@ -10,6 +10,9 @@ $all = docker ps -aq
 if ($all) {
     docker rm $all | Out-Null
 }
+docker system prune
+docker rmi api-gw:latest
+
 # Start the nginx proxy with the latest configuration.
 # Docker Compose mounts the files into
 # /usr/local/openresty/nginx/conf so our routesdoc
@@ -19,7 +22,7 @@ if ($all) {
 # docker compose up -d nginx
 Write-Host "Starting nginx proxy with docker file..."
 $networkName = "api-gw_app_network"
-docker network create api-gw_app_network
+docker network create $networkName
 docker build -t api-gw:latest .
 docker run -d --name nginx --network $networkName api-gw:latest
 
