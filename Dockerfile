@@ -10,4 +10,7 @@ RUN mkdir -p /var/log/nginx
 
 EXPOSE 80
 
-CMD ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]

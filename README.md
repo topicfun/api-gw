@@ -27,6 +27,10 @@ The provided `docker-compose.yml` loads these variables from `.env.dev` and
 passes them to the Nginx container. Adjust the values in that file to control
 what the Lua logger records.
 
+The Docker image prints the current values of these variables to the container
+log on startup via a small entrypoint script. This helps verify that the
+expected settings are in effect.
+
 
 ## Route configuration
 
