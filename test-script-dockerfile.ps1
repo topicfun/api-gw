@@ -19,9 +19,12 @@ if ($all) {
 # docker compose up -d nginx
 Write-Host "Starting nginx proxy with docker file..."
 $networkName = "api-gw_app_network"
-docker network create api-gw_app_network
+docker network create $networkName
 docker build -t api-gw:latest .
-docker run -d --name nginx --network $networkName api-gw:latest
+# pass logging configuration from .env.dev and display the values
+docker run -d --name nginx --network $networkName --env-file .env.dev api-gw:latest
+Write-Host "Nginx container logging settings:"
+docker exec nginx sh -c "echo APP_LOG_INCLUDE_HEADERS=\$APP_LOG_INCLUDE_HEADERS && echo APP_LOG_INCLUDE_BODY=\$APP_LOG_INCLUDE_BODY"
 
 # Wait a few seconds for nginx to be ready
 Start-Sleep -Seconds 5
