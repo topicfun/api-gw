@@ -2,18 +2,24 @@
 
 # Step 1: stop any running containers so we can rebuild them
 Write-Host "Stopping running containers if they exist..."
-docker stop $(docker ps -q)
-docker rm $(docker ps --no-trunc -aq)
-
+$running = docker ps -q
+if ($running) {
+    docker stop $running | Out-Null
+}
+$all = docker ps -aq
+if ($all) {
+    docker rm $all | Out-Null
+}
 # Start the nginx proxy with the latest configuration.
 # Docker Compose mounts the files into
-# /usr/local/openresty/nginx/conf so our routes
+# /usr/local/openresty/nginx/conf so our routesdoc
 # and Lua logging are active.
 # Write-Host "Starting nginx proxy with docker-compose..."
 # docker-compose will read `.env.dev` via `env_file` in the compose file
 # docker compose up -d nginx
 Write-Host "Starting nginx proxy with docker file..."
 $networkName = "api-gw_app_network"
+docker network create api-gw_app_network
 docker build -t api-gw:latest .
 docker run -d --name nginx --network $networkName api-gw:latest
 

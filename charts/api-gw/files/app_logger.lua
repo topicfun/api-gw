@@ -71,5 +71,5 @@ local log_line = "{" .. table.concat(parts, ",") .. "}\n"
 local f = io.stdout
 if f then
   f:write(log_line)
-  f:close()
+  f:flush()
 end
