@@ -27,7 +27,7 @@ docker build -t api-gw:latest .
 # pass logging configuration from .env.dev and display the values
 docker run -d --name nginx --network $networkName --env-file .env.dev api-gw:latest
 Write-Host "Nginx container logging settings:"
-docker exec nginx sh -c "echo APP_LOG_INCLUDE_HEADERS=\$APP_LOG_INCLUDE_HEADERS && echo APP_LOG_INCLUDE_BODY=\$APP_LOG_INCLUDE_BODY"
+docker exec nginx sh -c 'echo APP_LOG_INCLUDE_HEADERS=$APP_LOG_INCLUDE_HEADERS && echo APP_LOG_INCLUDE_BODY=$APP_LOG_INCLUDE_BODY'
 
 # Wait a few seconds for nginx to be ready
 Start-Sleep -Seconds 5
