@@ -27,6 +27,12 @@ The provided `docker-compose.yml` loads these variables from `.env.dev` and
 passes them to the Nginx container. Adjust the values in that file to control
 what the Lua logger records.
 
+When using the PowerShell script `test-script-dockerfile.ps1` the container is
+started directly with `docker run`. In this case the environment file is passed
+explicitly so the logging variables take effect. The entrypoint of the image now
+prints the current values of these variables when the container starts which
+helps verifying that the correct configuration is applied.
+
 
 ## Route configuration
 
