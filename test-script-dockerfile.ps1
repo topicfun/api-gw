@@ -21,7 +21,10 @@ Write-Host "Starting nginx proxy with docker file..."
 $networkName = "api-gw_app_network"
 docker network create api-gw_app_network
 docker build -t api-gw:latest .
-docker run -d --name nginx --network $networkName api-gw:latest
+Write-Host "Using environment variables from .env.dev"
+Get-Content .env.dev
+$envFile = "./.env.dev"
+docker run -d --name nginx --network $networkName --env-file $envFile api-gw:latest
 
 # Wait a few seconds for nginx to be ready
 Start-Sleep -Seconds 5
