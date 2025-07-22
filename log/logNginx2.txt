@@ -1,0 +1,35 @@
+GET http://localhost:8084/tmf-api/partyRoleManagement/v4/partyRole?party.id=CA0000925946
+200
+1992 ms
+GET /tmf-api/partyRoleManagement/v4/partyRole?party.id=CA0000925946 HTTP/1.1
+Original-Access-Token: {{wso2_jwt_access_token}}
+User-Agent: PostmanRuntime/7.44.1
+Accept: */*
+Postman-Token: 2cc51dcf-234d-423e-ab9f-d959107ad6ee
+Host: localhost:8084
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+ 
+HTTP/1.1 200 OK
+Server: openresty/1.27.1.2
+Date: Tue, 22 Jul 2025 09:13:17 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,apikey,Internal-Key,Authorization
+X-Frame-Options: DENY
+activityid: 3e91c4d8-edfe-4055-bb93-dca7490ea5e9
+Access-Control-Expose-Headers:
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Vary: Access-Control-Request-Headers
+Vary: Access-Control-Request-Method
+Vary: Origin
+Expires: 0
+X-XSS-Protection: 0
+X-App-Nginx: true
+ 
