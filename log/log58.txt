@@ -1,0 +1,36 @@
+GET http://localhost:58084/tmf-api/partyRoleManagement/v4/partyRole?party.id=CA0000925946
+200
+934 ms
+GET /tmf-api/partyRoleManagement/v4/partyRole?party.id=CA0000925946 HTTP/1.1
+Original-Access-Token: {{wso2_jwt_access_token}}
+User-Agent: PostmanRuntime/7.44.1
+Accept: */*
+Postman-Token: 2cb1bbc6-a52f-4369-bfdb-966831c1cb73
+Host: localhost:58084
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+ 
+HTTP/1.1 200 OK
+Date: Tue, 22 Jul 2025 08:54:23 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive, keep-alive
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,apikey,Internal-Key,Authorization
+X-Frame-Options: DENY
+activityid: bf8fa564-066f-4b35-9d16-76988cd614a7
+Access-Control-Expose-Headers:
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Vary: Access-Control-Request-Headers
+Vary: Access-Control-Request-Method
+Vary: Origin
+Expires: 0
+X-XSS-Protection: 0
+Content-Type: application/json
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+ 
+[{"statusReason":null,"validFor":null,"engagedParty":{"@baseType":null,"@schemaLocation":null,"@referredType":"Individual ID","id":"CA0000925946","href":null,"name":"Digital Mobile App","description":null,"@type":"Customer Account Number"},"roleType":null,"account":[{"@baseType":null,"@schemaLocation":null,"@referredType":null,"id":"CA0000925946","href":null,"name":"Digital Mobile App","description":null,"@type":"Customer Account ID"}],"paymentMethod":null,"contactMedium":null,"characteristic":null,"creditProfile":null,"relatedParty":[{"id":"BA0000691590","href":null,"name":"Digital Mobile App Test1","role":null,"validFor":null,"@baseType":null,"@schemaLocation":null,"@referredType":null,"@type":"Billing Account"},{"id":"BA0000691592","href":null,"name":"Digital Mobile App Test1","role":null,"validFor":null,"@baseType":null,"@schemaLocation":null,"@referredType":null,"@type":"Billing Account"},{"id":"BA0000691594","href":null,"name":"Digital Mobile App Test1","role":null,"validFor":null,"@baseType":null,"@schemaLocation":null,"@referredType":null,"@type":"Billing Account"},{"id":"BA0000691596","href":null,"name":"Digital Mobile App Test1","role":null,"validFor":null,"@baseType":null,"@schemaLocation":null,"@referredType":null,"@type":"Billing Account"}],"agreement":[{"@baseType":null,"@schemaLocation":null,"@referredType":null,"id":"123372/ONE/2025","href":null,"name":"Digital Mobile App Test1 Test1 J96002228T","description":null,"@type":"Customer Aggrement ID"},{"@baseType":null,"@schemaLocation":null,"@referredType":null,"id":"123375/ONE/2025","href":null,"name":"Digital Mobile App Test1 Test1 J96002228T","description":null,"@type":"Customer Aggrement ID"}],"@baseType":null,"@schemaLocation":"Party Role Management","@referredType":null,"id":"CA0000925946","href":null,"name":"Primary","status":"Actual"}]
