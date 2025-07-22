@@ -1,8 +1,8 @@
 FROM openresty/openresty:alpine
 
 # Required for the Lua proxy that handles duplicate headers
-RUN apk add --no-cache lua-resty-http
-
+RUN apk add --no-cache perl \
+    && opm get ledgetech/lua-resty-http
 
 COPY nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY nginx/log_format.conf /usr/local/openresty/nginx/conf/log_format.conf
