@@ -5,6 +5,7 @@ COPY nginx/log_format.conf /usr/local/openresty/nginx/conf/log_format.conf
 COPY nginx/app_logger.lua /usr/local/openresty/nginx/conf/app_logger.lua
 COPY nginx/app_logger_body.lua /usr/local/openresty/nginx/conf/app_logger_body.lua
 COPY nginx/routes.conf /usr/local/openresty/nginx/route/routes.conf
+COPY nginx/duplicate_header_proxy.lua /usr/local/openresty/nginx/conf/duplicate_header_proxy.lua
 
 RUN mkdir -p /var/log/nginx
 
