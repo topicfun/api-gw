@@ -1,0 +1,65 @@
+{
+  "channel": {
+    "id": "9168254157613389200"
+  },
+  "productOfferingQualificationItem": [
+    {
+      "id": "0",
+      "product": {
+        "id": "{{billingAccountID}}",
+        "productCharacteristic": [
+          {
+            "name": "Type of Service",
+            "value": "Postpaid"
+          },
+          {
+            "name": "E-pack",
+            "value": "Yes"
+          },
+          {
+            "name": "POQ:offeringId",
+            "valueType": "list",
+            "value": [
+              "9168590171313243839"
+            ]
+          }
+        ],
+        "productTerm": [
+          {
+            "name": "loyalty",
+            "duration": {
+              "amount": 12
+            }
+          }
+        ],
+        "place": [
+          {
+            "role": "Location ID",
+            "id": "123123123"
+          },
+          {
+            "role": "Address ID",
+            "id": "123123123"
+          },
+          {
+            "role": "MAD ID",
+            "id": "123123123"
+          }
+        ],
+        "@type": "Mobile"
+      }
+    }
+  ],
+  "relatedParty": [
+    {
+      "id": "Consumer",
+      "name": "Consumer",
+      "@referredType": "Customer Category"
+    },
+    {
+      "id": "9169792135213547910",
+      "@referredType": "Customer Account"
+    }
+  ],
+  "@type": "tlo"
+}

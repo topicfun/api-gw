@@ -1,0 +1,29 @@
+* Host localhost:58085 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:58085...
+* Connected to localhost (::1) port 58085
+> GET /tmf-api/partyRoleManagement/v4/partyRole?party.id=9157702912213030000 HTTP/1.1
+> Host: localhost:58085
+> User-Agent: curl/8.7.1
+> Accept: */*
+> Original-Access-Token: {{wso2_jwt_access_token}}
+> Original-Subject: testSub_2
+> 
+* Request completely sent off
+< HTTP/1.1 200 
+< Matched-Stub-Id: dd71bded-0b78-4c48-aa94-22cd5e6a4acc
+< Transfer-Encoding: chunked
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Tue, 22 Jul 2025 12:06:50 GMT
+< 
+{ [2144 bytes data]
+* chunk hex-length char not a hex digit: 0x5b
+* Illegal or missing hexadecimal sequence in chunked-encoding
+* Failed reading the chunked-encoded stream
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection
+curl: (56) chunk hex-length char not a hex digit: 0x5b
