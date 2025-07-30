@@ -17,6 +17,11 @@ kubectl port-forward service/alb-dxl-db-rw 15432:5432 > /dev/null 2>&1 & \
 kubectl port-forward service/strapi-sandbox 58083:8080 > /dev/null 2>&1 & \
 kubectl port-forward service/dxl-party-role-tmf669 58084:8080  > /dev/null 2>&1 & \
 kubectl port-forward service/wiremock-service 58085:80  > /dev/null 2>&1 &
+kubectl port-forward service/strapi-sandbox 58086:5432 > /dev/null 2>&1 & \
+kubectl port-forward service/dxl-product-offering-filter 58087:8080 > /dev/null 2>&1 &
+
+
+
 
 #temp-jd-alerant
 #kubectl port-forward service/dxl-party-role-tmf669 58084:8080 -n jd-alb-sit &

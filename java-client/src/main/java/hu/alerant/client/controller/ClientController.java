@@ -40,4 +40,12 @@ public class ClientController {
         return apiService.callConfigAPI()
                 .onErrorReturn(new Message("ConfigAPI service unavailable."));
     }
+
+    @GetMapping("/callConfigAPI13")
+    public Mono<Message> callConfigAPI13() {
+        log.info("client calls configAPI13");
+        return apiService.callConfigAPI13()
+                .onErrorReturn(new Message("ConfigAPI service unavailable."));
+    }
+
 }

@@ -12,6 +12,9 @@ if ($all) {
 }
 docker system prune -f
 docker rmi api-gw:latest
+docker rmi java-client:latest
+docker rmi dxl-client-config-svc:latest
+docker rmi java-backend
 
 # Start the nginx proxy with the latest configuration.
 # Docker Compose mounts the files into
@@ -53,9 +56,11 @@ Start-Sleep -Seconds 15
 
 # Step 4: call the client endpoints and print the responses
 $endpoints = @(
-    "http://localhost:8081/client/callHello",
-    "http://localhost:8081/client/callData",
+#    "http://localhost:8081/client/callHello",
+#    "http://localhost:8081/client/callData",
+#    "http://localhost:8081/client/callConfigAPI"
     "http://localhost:8081/client/callConfigAPI"
+    "http://localhost:8081/client/callConfigAPI13"
 )
 
 foreach ($url in $endpoints) {

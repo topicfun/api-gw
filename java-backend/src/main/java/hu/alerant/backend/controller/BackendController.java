@@ -28,4 +28,13 @@ public class BackendController {
                 .header("X-App-Header", "from-backend")
                 .body(new Message("This is some data from the backend."));
     }
+
+    @GetMapping("/configAPI/13")
+    public ResponseEntity<Message> getConfig() {
+        log.info("backend configAPI 13 call");
+        return ResponseEntity.ok()
+                .header("X-App-Header", "from-backend")
+                .body(new Message("Config13 from Backend"));
+    }
+
 }

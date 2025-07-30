@@ -84,10 +84,15 @@ public class ApiService {
     }
 
     public Mono<Message> getDataFromBackend() {
-        return makeRequest("/backend-api/data", Message.class); // Path to Nginx
+        return makeRequest("/backend-api/hello/1id", Message.class); // Path to Nginx
     }
 
     public Mono<Message> callConfigAPI() {
         return makeRequest("/api/configAPI", Message.class);
     }
+    public Mono<Message> callConfigAPI13() {
+        return makeRequest("/api/configAPI/13", Message.class);
+    }
+
+
 }

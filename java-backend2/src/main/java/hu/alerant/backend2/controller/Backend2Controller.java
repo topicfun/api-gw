@@ -29,11 +29,13 @@ public class Backend2Controller {
                 .body(new Message("This is some data from the backend2."));
     }
 
-    @GetMapping("/configAPI")
+    @GetMapping("/configAPI/**")
     public ResponseEntity<Message> getConfig() {
         log.info("backend2 configAPI call");
         return ResponseEntity.ok()
                 .header("X-App-Header", "from-backend")
                 .body(new Message("Config from Backend2"));
     }
+
+
 }
